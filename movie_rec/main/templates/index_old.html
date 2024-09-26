@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of Movies</title>
+    <style>
+        /* CSS for movie cards */
+        .movie-card {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .movie-thumbnail {
+            max-width: 100%;
+            height: auto;
+        }
+        .movie-details {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Movies</h1>
+    
+    {% for movie in movies %}
+        <div class="movie-card">
+            {% if movie.thumbnail %}
+                <img class="movie-thumbnail" src="data:image/jpeg;base64,{{ movie.thumbnail }}" alt="{{ movie.name }} Thumbnail">
+            {% else %}
+                <img>
+            {% endif %}
+            <div class="movie-details">
+                <h2>{{ movie.name }}</h2>
+                <p><strong>Year:</strong> {{ movie.year }}</p>
+                <p><strong>Director:</strong> {{ movie.director }}</p>
+                <p><strong>Genres:</strong> {{ movie.genres }}</p>
+                <p><strong>Country:</strong> {{ movie.country }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

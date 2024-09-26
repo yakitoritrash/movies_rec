@@ -1,0 +1,10 @@
+{% if movies %}
+    <h2>Search Results:</h2>
+    <ul>
+        {% for movie in movies %}
+            <li>{{ movie.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h2>No results found</h2>
+{% endif %}
